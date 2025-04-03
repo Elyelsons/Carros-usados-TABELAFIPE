@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Veículo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Venda seu Veículo com Segurança</h1>
+    </header>
+    <h2>Cadastre seu veículo</h2>
+    <form id="vehicleForm">
+        <label for="brand">Marca:</label>
+        <input type="text" id="brand" required>
+        
+        <label for="model">Modelo:</label>
+        <input type="text" id="model" required>
+        
+        <label for="year">Ano:</label>
+        <input type="number" id="year" required>
+        
+        <button type="button" onclick="fetchFipeValue()">Consultar e Cadastrar</button>
+    </form>
+    
+    <h3 id="result"></h3>
+
+    <script>
+        function fetchFipeValue() {
+            const brand = document.getElementById('brand').value;
+            const model = document.getElementById('model').value;
+            const year = document.getElementById('year').value;
+            
+            if (!brand || !model || !year) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Simulando a obtenção do preço da Tabela FIPE
+            const precoFipe = Math.floor(Math.random() * (80000 - 20000) + 20000);
+            document.getElementById('result').innerText = `Valor estimado pela Tabela FIPE: R$ ${precoFipe.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+        }
+    </script>
+</body>
+</html>
